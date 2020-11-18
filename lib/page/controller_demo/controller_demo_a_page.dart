@@ -10,17 +10,13 @@ class ControllerDemoAPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = DemoAController();
     return Scaffold(
       appBar: AppBar(
         title: Text('demo A'),
       ),
       body: GetBuilder<DemoAController>(
-        init: _controller,
+        init: DemoAController(),
         global: global,
-        dispose: (state) {
-          _controller.onClose();
-        },
         initState: (state) {
           print('ControllerDemoAPage   initState');
         },
@@ -28,15 +24,12 @@ class ControllerDemoAPage extends StatelessWidget {
           return ListView(
             children: [
               Obx(() {
-                print('count1 obx');
                 return Text(controller.count1.value.toString(), style: TextStyle(fontSize: 30));
               }),
               Obx(() {
-                print('count2 obx');
                 return Text(controller.count2.value.toString(), style: TextStyle(fontSize: 30));
               }),
               Obx(() {
-                print('count3 obx');
                 return Text(controller.count3.value.toString(), style: TextStyle(fontSize: 30));
               }),
               SizedBox(

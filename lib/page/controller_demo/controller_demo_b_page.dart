@@ -3,17 +3,21 @@ import 'package:fluttergetxdemo/controllers/demo_a_controller.dart';
 import 'package:fluttergetxdemo/controllers/demo_b_controller.dart';
 import 'package:get/get.dart';
 
+import 'controller_demo_a_page.dart';
+
 class ControllerDemoBPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final demoAController = Get.find<DemoAController>();
-    final _controller = DemoBController();
     return Scaffold(
       appBar: AppBar(
         title: Text('demo B'),
       ),
       body: GetBuilder<DemoBController>(
-        init: _controller,
+        init: DemoBController(),
+        initState: (state) {
+          print('ControllerDemoBPage   initState');
+        },
         builder: (controller) {
           return ListView(
             children: [
@@ -69,7 +73,7 @@ class ControllerDemoBPage extends StatelessWidget {
                 child: Text('push B'),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return ControllerDemoBPage();
+                    return ControllerDemoAPage(global: true);
                   }));
                 },
               )
