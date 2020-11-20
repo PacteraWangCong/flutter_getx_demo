@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergetxdemo/config/app_routes.dart';
 import 'package:fluttergetxdemo/controllers/demo_a_controller.dart';
 import 'package:get/get.dart';
 import 'controller_demo_b_page.dart';
@@ -57,13 +58,9 @@ class ControllerDemoAPage extends StatelessWidget {
                 child: Text(global ? 'push B' : 'push not global A'),
                 onPressed: () {
                   if (global) {
-                    navigator.push(MaterialPageRoute(builder: (context) {
-                      return ControllerDemoBPage();
-                    }));
+                    AppRoutes.push(ControllerDemoBPage());
                   } else {
-                    navigator.push(MaterialPageRoute(builder: (context) {
-                      return ControllerDemoAPage(global: false);
-                    }));
+                    AppRoutes.push(ControllerDemoAPage(global: false));
                   }
                 },
               ),

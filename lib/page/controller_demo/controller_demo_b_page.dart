@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergetxdemo/config/app_routes.dart';
 import 'package:fluttergetxdemo/controllers/demo_a_controller.dart';
 import 'package:fluttergetxdemo/controllers/demo_b_controller.dart';
 import 'package:get/get.dart';
@@ -72,9 +73,7 @@ class ControllerDemoBPage extends StatelessWidget {
               RaisedButton(
                 child: Text('push A'),
                 onPressed: () {
-                  navigator.push(MaterialPageRoute(builder: (context) {
-                    return ControllerDemoAPage(global: true);
-                  }));
+                  AppRoutes.push(ControllerDemoAPage(global: true));
                 },
               )
             ],
