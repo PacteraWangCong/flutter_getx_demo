@@ -8,7 +8,7 @@ class DemoBController extends GetxController {
 
   @override
   void onInit() {
-    print('DemoAController B onInit');
+    print('DemoBController B onInit');
     super.onInit();
   }
 

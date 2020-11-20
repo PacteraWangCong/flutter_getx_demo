@@ -21,9 +21,9 @@ class ControllerDemoBPage extends StatelessWidget {
         builder: (controller) {
           return ListView(
             children: [
-              Obx(() => Text(demoAController.count1.toString(), style: TextStyle(fontSize: 30))),
-              Obx(() => Text(demoAController.count2.toString(), style: TextStyle(fontSize: 30))),
-              Obx(() => Text(demoAController.count3.toString(), style: TextStyle(fontSize: 30))),
+              Obx(() => Text("A1: " + demoAController.count1.toString(), style: TextStyle(fontSize: 30))),
+              Obx(() => Text("A2: " + demoAController.count2.toString(), style: TextStyle(fontSize: 30))),
+              Obx(() => Text("A3: " + demoAController.count3.toString(), style: TextStyle(fontSize: 30))),
               SizedBox(
                 height: 20,
               ),
@@ -46,9 +46,9 @@ class ControllerDemoBPage extends StatelessWidget {
                 },
               ),
               SizedBox(height: 50),
-              Obx(() => Text(controller.count1.toString(), style: TextStyle(fontSize: 30))),
-              Obx(() => Text(controller.count2.toString(), style: TextStyle(fontSize: 30))),
-              Obx(() => Text(controller.count3.toString(), style: TextStyle(fontSize: 30))),
+              Obx(() => Text("B1: " + controller.count1.toString(), style: TextStyle(fontSize: 30))),
+              Obx(() => Text("B2: " + controller.count2.toString(), style: TextStyle(fontSize: 30))),
+              Obx(() => Text("B3: " + controller.count3.toString(), style: TextStyle(fontSize: 30))),
               SizedBox(height: 50),
               RaisedButton(
                 child: Text('add1 B'),
@@ -70,9 +70,9 @@ class ControllerDemoBPage extends StatelessWidget {
               ),
               SizedBox(height: 30),
               RaisedButton(
-                child: Text('push B'),
+                child: Text('push A'),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  navigator.push(MaterialPageRoute(builder: (context) {
                     return ControllerDemoAPage(global: true);
                   }));
                 },

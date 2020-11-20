@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergetxdemo/page/home_page.dart';
+import 'package:get/get.dart';
 import 'controller_demo_a_page.dart';
 
 class ControllerDemoPage extends StatelessWidget {
@@ -13,7 +14,8 @@ class ControllerDemoPage extends StatelessWidget {
             title: 'conroller global',
             description: '//演示一个作用全局的controller',
             clickedAction: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              Get.to(ControllerDemoAPage(global: true));
+              navigator.push(MaterialPageRoute(builder: (context) {
                 return ControllerDemoAPage(global: true);
               }));
             },
@@ -22,7 +24,7 @@ class ControllerDemoPage extends StatelessWidget {
             title: 'conroller not global',
             description: '//演示一个作用非全局的controller',
             clickedAction: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              navigator.push(MaterialPageRoute(builder: (context) {
                 return ControllerDemoAPage(global: false);
               }));
             },

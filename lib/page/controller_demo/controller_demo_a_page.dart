@@ -24,13 +24,13 @@ class ControllerDemoAPage extends StatelessWidget {
           return ListView(
             children: [
               Obx(() {
-                return Text(controller.count1.value.toString(), style: TextStyle(fontSize: 30));
+                return Text("A1: " + controller.count1.value.toString(), style: TextStyle(fontSize: 30));
               }),
               Obx(() {
-                return Text(controller.count2.value.toString(), style: TextStyle(fontSize: 30));
+                return Text("A2: " + controller.count2.value.toString(), style: TextStyle(fontSize: 30));
               }),
               Obx(() {
-                return Text(controller.count3.value.toString(), style: TextStyle(fontSize: 30));
+                return Text("A3: " + controller.count3.value.toString(), style: TextStyle(fontSize: 30));
               }),
               SizedBox(
                 height: 50,
@@ -54,14 +54,14 @@ class ControllerDemoAPage extends StatelessWidget {
                 },
               ),
               RaisedButton(
-                child: Text('push B'),
+                child: Text(global ? 'push B' : 'push not global A'),
                 onPressed: () {
                   if (global) {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    navigator.push(MaterialPageRoute(builder: (context) {
                       return ControllerDemoBPage();
                     }));
                   } else {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    navigator.push(MaterialPageRoute(builder: (context) {
                       return ControllerDemoAPage(global: false);
                     }));
                   }
