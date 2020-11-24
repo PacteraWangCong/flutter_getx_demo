@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fluttergetxdemo/config/app_routes.dart';
+import 'package:fluttergetxdemo/controllers/app_controller.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -12,23 +15,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: AppRoutes.home,
-      getPages: AppRoutes.routes,
-      navigatorObservers: [
-        MyObserver()
-      ],
+      routes: AppRoutes.routes,
+      onInit: () {
+        Get.put(AppController());
+      },
+      navigatorObservers: [MyObserver()],
     );
   }
 }
 
 /// 监听路由发生变化
 class MyObserver extends NavigatorObserver {
-
   @override
   void didPush(Route route, Route previousRoute) {
     super.didPush(route, previousRoute);
     if (route is MaterialPageRoute || route is GetPageRoute) {
-      //appBloc.routeChange(RouteChangeType.push);
-      print('route is didPush');
+      Future.delayed(Duration(milliseconds: 100), () {
+        Get.find<AppController>().routeNameChange(Get.routing?.current ?? '');
+      });
     }
   }
 
@@ -36,8 +40,9 @@ class MyObserver extends NavigatorObserver {
   void didPop(Route route, Route previousRoute) {
     super.didPop(route, previousRoute);
     if (route is MaterialPageRoute || route is GetPageRoute) {
-      //appBloc.routeChange(RouteChangeType.pop);
-      print('route is didPop');
+      Future.delayed(Duration(milliseconds: 100), () {
+        Get.find<AppController>().routeNameChange(Get.routing?.current ?? '');
+      });
     }
   }
 }

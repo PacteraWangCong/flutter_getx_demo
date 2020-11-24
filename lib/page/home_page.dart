@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergetxdemo/config/app_routes.dart';
-import 'controller_demo/controller_demo_page.dart';
+import 'controller_demo_page.dart';
+import 'appear_demo_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,6 +15,13 @@ class HomePage extends StatelessWidget {
             description: '//了解controller生命周期和作用范围的demo',
             clickedAction: () {
               AppRoutes.push(ControllerDemoPage());
+            },
+          ),
+          HomeBtn(
+            title: 'page appear demo',
+            description: '//触发画面每次显示实现',
+            clickedAction: () {
+              AppRoutes.push(AppearDemoAPage());
             },
           )
         ],
