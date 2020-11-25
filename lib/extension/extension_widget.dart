@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergetxdemo/controllers/app_controller.dart';
+import 'package:fluttergetxdemo/controllers/app_service.dart';
 import 'package:get/get.dart';
 
 extension EXBuildContext on BuildContext {
@@ -9,8 +9,8 @@ extension EXBuildContext on BuildContext {
   /// 监听的[BuildContext]必须有路由
   /// 配合[StatelessWidget]和[GetBuilder]使用，[GetBuilder]dispose时执行disposeWorker()
   void didAppearCallBack(VoidCallback didAppearCallBack) {
-    if (Get.isRegistered<AppController>() && this != null) {
-      final appController = Get.find<AppController>();
+    if (Get.isRegistered<AppService>() && this != null) {
+      final appController = Get.find<AppService>();
       final worker = interval(
         appController.routeNameObs,
         (routeName) {

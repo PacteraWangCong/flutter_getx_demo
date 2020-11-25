@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class AppController extends GetxController {
+class AppService extends GetxService {
   var routeNameObs = ''.obs;
 
   void routeNameChange(String name) {

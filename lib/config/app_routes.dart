@@ -30,6 +30,7 @@ class AppRoutes {
     /// navigator.pushNamed('routeName');
   }
 
+
   static String getDefaultRouteName(Widget page) {
     return "/${page.runtimeType.toString()}";
   }

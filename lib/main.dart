@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:fluttergetxdemo/config/app_routes.dart';
-import 'package:fluttergetxdemo/controllers/app_controller.dart';
+import 'package:fluttergetxdemo/controllers/app_service.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -14,10 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      enableLog: false,
       initialRoute: AppRoutes.home,
       routes: AppRoutes.routes,
-      onInit: () {
-        Get.put(AppController());
+      onInit: () async {
+        Get.lazyPut(() => AppService());
       },
       navigatorObservers: [MyObserver()],
     );
@@ -31,7 +32,7 @@ class MyObserver extends NavigatorObserver {
     super.didPush(route, previousRoute);
     if (route is MaterialPageRoute || route is GetPageRoute) {
       Future.delayed(Duration(milliseconds: 100), () {
-        Get.find<AppController>().routeNameChange(Get.routing?.current ?? '');
+        Get.find<AppService>().routeNameChange(Get.routing?.current ?? '');
       });
     }
   }
@@ -41,7 +42,7 @@ class MyObserver extends NavigatorObserver {
     super.didPop(route, previousRoute);
     if (route is MaterialPageRoute || route is GetPageRoute) {
       Future.delayed(Duration(milliseconds: 100), () {
-        Get.find<AppController>().routeNameChange(Get.routing?.current ?? '');
+        Get.find<AppService>().routeNameChange(Get.routing?.current ?? '');
       });
     }
   }
