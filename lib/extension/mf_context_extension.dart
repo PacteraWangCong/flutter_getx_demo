@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergetxdemo/controllers/app_controller.dart';
+import 'package:fluttergetxdemo/controllers/app_service.dart';
 import 'package:get/get.dart';
 
-extension EXBuildContext on BuildContext {
+extension MFContextExtension on BuildContext {
   static Map<int, Worker> workedMap = {};
 
   /// 用于监听画面的每次显示
   /// 监听的[BuildContext]必须有路由
   /// 配合[StatelessWidget]和[GetBuilder]使用，[GetBuilder]dispose时执行disposeWorker()
   void didAppearCallBack(VoidCallback didAppearCallBack) {
-    if (Get.isRegistered<AppController>() && this != null) {
-      final appController = Get.find<AppController>();
+    if (Get.isRegistered<AppService>() && this != null) {
+      final appController = Get.find<AppService>();
       final worker = interval(
         appController.routeNameObs,
         (routeName) {
@@ -25,17 +25,17 @@ extension EXBuildContext on BuildContext {
         },
         time: Duration(milliseconds: 100),
       );
-      EXBuildContext.workedMap[this.hashCode] = worker;
+      MFContextExtension.workedMap[this.hashCode] = worker;
     }
   }
 
   void disposeWorker() {
-    if (EXBuildContext.workedMap.containsKey(this.hashCode)) {
-      final worked = EXBuildContext.workedMap[this.hashCode];
+    if (MFContextExtension.workedMap.containsKey(this.hashCode)) {
+      final worked = MFContextExtension.workedMap[this.hashCode];
       if (!worked.isNull) {
         worked.dispose();
       }
-      EXBuildContext.workedMap.remove(this.hashCode);
+      MFContextExtension.workedMap.remove(this.hashCode);
     }
   }
 }
