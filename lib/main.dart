@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:fluttergetxdemo/config/app_routes.dart';
 import 'package:fluttergetxdemo/controllers/app_service.dart';
 import 'package:get/get.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +19,12 @@ class MyApp extends StatelessWidget {
       routes: AppRoutes.routes,
       onInit: () async {
         Get.lazyPut(() => AppService());
+        EasyLoading.instance
+          ..userInteractions = false
+          ..indicatorSize = 50
+          ..contentPadding = EdgeInsets.all(30);
       },
+      builder: EasyLoading.init(),
       navigatorObservers: [MyObserver()],
     );
   }
