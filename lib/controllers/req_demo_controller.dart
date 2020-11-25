@@ -34,8 +34,8 @@ class ReqDemoController extends GetxController {
   void reqInit() {
     EasyLoading.show();
     Future.delayed(Duration(seconds: 1), () {
-      reqResult.value = Result(true, data: getDemoList());
       EasyLoading.dismiss();
+      reqResult.value = Result(true, data: getDemoList());
     });
   }
 }
@@ -45,16 +45,16 @@ extension ReqDemoControllerDemo on ReqDemoController {
   void reloadOk() {
     EasyLoading.show();
     Future.delayed(Duration(seconds: 1), () {
-      reqResult.value = Result(true, data: getDemoList());
       EasyLoading.dismiss();
+      reqResult.value = Result(true, data: getDemoList());
     });
   }
 
   void reloadNg() {
     EasyLoading.show();
     Future.delayed(Duration(seconds: 1), () {
-      reqResult.value = Result(false, error: 'test 请求失败');
       EasyLoading.dismiss();
+      reqResult.value = Result(false, error: 'test 请求失败');
     });
   }
 
