@@ -3,6 +3,7 @@ import 'package:fluttergetxdemo/config/app_routes.dart';
 import 'controller_demo_page.dart';
 import 'appear_demo_page.dart';
 import 'req_demo_page.dart';
+import 'widgets_demo_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -30,6 +31,13 @@ class HomePage extends StatelessWidget {
             description: '//画面每次显示事件',
             clickedAction: () {
               AppRoutes.push(AppearDemoAPage());
+            },
+          ),
+          HomeBtn(
+            title: 'widgets demo',
+            description: '//Getx自带控件和自定义控件',
+            clickedAction: () {
+              AppRoutes.push(WidgetsDemoPage());
             },
           ),
         ],

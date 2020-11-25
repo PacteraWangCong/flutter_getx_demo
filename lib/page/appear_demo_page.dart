@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergetxdemo/config/app_routes.dart';
 import 'package:get/get.dart';
-import 'package:fluttergetxdemo/extension/mf_context_extension.dart';
+import 'package:fluttergetxdemo/mf_extensions/mf_context_extension.dart';
 
 class AppearDemoAPage extends StatelessWidget {
   @override
