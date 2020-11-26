@@ -50,12 +50,14 @@ class HomeBtn extends StatelessWidget {
   final String title;
   final String description;
   final VoidCallback clickedAction;
+  final Widget child;
 
   const HomeBtn({
     Key key,
     this.title,
     this.description,
     this.clickedAction,
+    this.child,
   }) : super(key: key);
 
   @override
@@ -67,12 +69,13 @@ class HomeBtn extends StatelessWidget {
         children: [
           SizedBox(height: 20),
           Text(description, style: TextStyle(fontSize: 16, color: Colors.green)),
-          RaisedButton(
-            child: Text(title),
-            onPressed: () {
-              clickedAction();
-            },
-          )
+          child ??
+              RaisedButton(
+                child: Text(title),
+                onPressed: () {
+                  clickedAction();
+                },
+              )
         ],
       ),
     );

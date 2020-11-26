@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergetxdemo/mf_widgets/mf_pop_alert.dart';
+import 'package:fluttergetxdemo/mf_widgets/mf_safe_button.dart';
 import 'home_page.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +8,7 @@ class WidgetsDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int snackBarCount = 0;
+    final safeButtonCount = 0.obs;
 
     return Scaffold(
       appBar: AppBar(title: Text('widgets demo')),
@@ -53,6 +55,29 @@ class WidgetsDemoPage extends StatelessWidget {
                 ),
               );
             },
+          ),
+          HomeBtn(
+            description: '//防止button 连续点击',
+            child: Row(
+              children: [
+                MFSafeButton(
+                  child: Container(
+                    color: Colors.green,
+                    padding: EdgeInsets.all(15),
+                    child: Text(
+                      'onPressed',
+                      style: TextStyle(color: Colors.white, fontSize: 22),
+                    ),
+                  ),
+                  onPressed: () {
+                    safeButtonCount.value += 1;
+                  },
+                  time: Duration(milliseconds: 500),
+                ),
+                SizedBox(width: 20),
+                Obx(() => Text('count: ${safeButtonCount.value}', style: TextStyle(fontSize: 20))),
+              ],
+            ),
           ),
         ],
       ),

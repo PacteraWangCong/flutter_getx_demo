@@ -30,6 +30,9 @@ class DemoAController extends GetxController {
   @override
   void onClose() {
     print('DemoAController A onClose');
+    count1.close();
+    count2.close();
+    count3.close();
     _workEver.dispose();
     _workOnce.dispose();
     _workDebounce.dispose();
@@ -47,5 +50,14 @@ class DemoBController extends GetxController {
   void onInit() {
     print('DemoBController B onInit');
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    print('DemoAController B onClose');
+    count1.close();
+    count2.close();
+    count3.close();
+    super.onClose();
   }
 }
