@@ -4,6 +4,7 @@ import 'controller_demo_page.dart';
 import 'appear_demo_page.dart';
 import 'req_demo_page.dart';
 import 'widgets_demo_page.dart';
+import 'account_demo_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -38,6 +39,13 @@ class HomePage extends StatelessWidget {
             description: '//Getx自带控件和自定义控件',
             clickedAction: () {
               AppRoutes.push(WidgetsDemoPage());
+            },
+          ),
+          HomeBtn(
+            title: '口座開設 demo',
+            description: '//口座開設 demo',
+            clickedAction: () {
+              AppRoutes.push(AccountDemoPage());
             },
           ),
         ],

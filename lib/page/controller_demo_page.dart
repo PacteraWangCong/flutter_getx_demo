@@ -12,14 +12,14 @@ class ControllerDemoPage extends StatelessWidget {
       body: ListView(
         children: [
           HomeBtn(
-            title: 'conroller global',
+            title: 'controller global',
             description: '//演示一个作用全局的controller',
             clickedAction: () {
               AppRoutes.push(ControllerDemoAPage(global: true));
             },
           ),
           HomeBtn(
-            title: 'conroller not global',
+            title: 'controller not global',
             description: '//演示一个作用非全局的controller',
             clickedAction: () {
               AppRoutes.push(ControllerDemoAPage(global: false));
