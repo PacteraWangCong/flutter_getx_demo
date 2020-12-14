@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import '../mf_widgets/mf_account_list_view.dart';
 import '../mf_widgets/mf_account_text_field.dart';
+import '../mf_widgets/mf_account_name_view.dart';
 
 class AccountDemoPage extends StatelessWidget {
   final controller = MFAccountListController();
+
+  final lastNameTC = TextEditingController();
+  final firstNameTC = TextEditingController();
+
+  final kanaLastNameTC = TextEditingController();
+  final kanaFirstNameTC = TextEditingController();
 
   final textController1 = TextEditingController();
   final textController2 = TextEditingController();
@@ -20,7 +27,41 @@ class AccountDemoPage extends StatelessWidget {
           child: MFAccountListView(
             controller: controller,
             children: [
-              AccountGroupHeader(title: '33'),
+              AccountGroupHeader(title: 'お名前(漢字)'),
+              MFAccountNameView(
+                title1: '姓',
+                title2: '名',
+                labelText1: '10文字まで  (例)銀行',
+                labelText2: '10文字まで  (例)太郎',
+                controller1: lastNameTC,
+                controller2: firstNameTC,
+                node1: CheckFocusNode(),
+                node2: CheckFocusNode(),
+                checkAction1: (value) {
+                  return value.isEmpty ? '入力してください' : '';
+                },
+                checkAction2: (value) {
+                  return value.isEmpty ? '入力してください' : '';
+                },
+              ),
+              AccountGroupHeader(title: 'お名前(フリガナ)'),
+              MFAccountNameView(
+                title1: 'セイ',
+                title2: 'メイ',
+                labelText1: '20文字まで  (例)ギンコウ',
+                labelText2: '20文字まで  (例)タロウ',
+                controller1: kanaLastNameTC,
+                controller2: kanaFirstNameTC,
+                node1: CheckFocusNode(),
+                node2: CheckFocusNode(),
+                checkAction1: (value) {
+                  return value.isEmpty ? '入力してください' : '';
+                },
+                checkAction2: (value) {
+                  return value.isEmpty ? '入力してください' : '';
+                },
+              ),
+              AccountGroupHeader(title: '11'),
               MFAccountTextField(
                 controller: textController1,
                 node: CheckFocusNode(),
@@ -36,11 +77,10 @@ class AccountDemoPage extends StatelessWidget {
                   return '';
                 },
               ),
-              AccountGroupHeader(title: '33'),
+              AccountGroupHeader(title: '22'),
               MFAccountTextField(
                 controller: textController2,
                 node: CheckFocusNode(),
-                title: '22',
                 labelText: '22',
                 checkAction: (value) {
                   if (value.isEmpty) {
@@ -72,9 +112,14 @@ class AccountDemoPage extends StatelessWidget {
                 color: Colors.white,
                 child: Text('jump to page'),
                 onPressed: () {
-                  controller.checkAll();
+                  if (controller.checkAll()) {
+                    print('check ok');
+                  } else {
+                    print('check ng');
+                  }
                 },
-              )
+              ),
+              SizedBox(height: 20)
             ],
           ),
         ),

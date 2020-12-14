@@ -17,7 +17,7 @@ class MFAccountListController {
       for (final item in children) {
         if (item is MFAccountCheck) {
           final temp = item as MFAccountCheck;
-          if (temp.check().isNotEmpty) {
+          if (!temp.check()) {
             if (check) {
               final index = children.indexOf(item);
               scrollTo(index: index);
@@ -27,7 +27,7 @@ class MFAccountListController {
         }
       }
     }
-    return true;
+    return check;
   }
 }
 
@@ -71,5 +71,5 @@ class _MFAccountListViewState extends State<MFAccountListView> {
 }
 
 abstract class MFAccountCheck {
-  String check();
+  bool check();
 }

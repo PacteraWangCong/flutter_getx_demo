@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'mf_input_text_field.dart';
 import 'mf_account_list_view.dart';
 
+export 'mf_input_text_field.dart';
+
 class MFAccountTextField extends StatefulWidget with MFAccountCheck {
   final String title;
   final String labelText;
@@ -26,12 +28,12 @@ class MFAccountTextField extends StatefulWidget with MFAccountCheck {
   _MFAccountTextFieldState createState() => _MFAccountTextFieldState();
 
   @override
-  String check() {
+  bool check() {
     if (checkAction != null) {
       node?.changeNotify();
-      return checkAction(controller?.text ?? '');
+      return checkAction(controller?.text ?? '').isEmpty;
     }
-    return '';
+    return true;
   }
 }
 
