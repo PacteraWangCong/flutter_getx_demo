@@ -1,141 +1,124 @@
 import 'package:flutter/material.dart';
+import '../mf_widgets/mf_account_list_view.dart';
+import '../mf_widgets/mf_account_text_field.dart';
 
 class AccountDemoPage extends StatelessWidget {
+  final controller = MFAccountListController();
+
+  final textController1 = TextEditingController();
+  final textController2 = TextEditingController();
+  final textController3 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('口座開設demo')),
-      body: ListView(
-        children: [AccountGroupView()],
-      ),
-    );
-  }
-}
-
-class AccountGroupView extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.only(left: 10, right: 10),
-            color: Color(0xFFEFEFF4),
-            height: 44,
-            child: Row(
-              children: [Text('お名前(漢字)')],
-            ),
+      backgroundColor: Color(0xFFE1E1E1),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: MFAccountListView(
+            controller: controller,
+            children: [
+              AccountGroupHeader(title: '33'),
+              MFAccountTextField(
+                controller: textController1,
+                node: CheckFocusNode(),
+                title: '11',
+                labelText: '11',
+                checkAction: (value) {
+                  if (value.isEmpty) {
+                    return '入力してください';
+                  }
+                  if (value.length < 10) {
+                    return '全角文字で入力してください';
+                  }
+                  return '';
+                },
+              ),
+              AccountGroupHeader(title: '33'),
+              MFAccountTextField(
+                controller: textController2,
+                node: CheckFocusNode(),
+                title: '22',
+                labelText: '22',
+                checkAction: (value) {
+                  if (value.isEmpty) {
+                    return '入力してください';
+                  }
+                  if (value.length < 10) {
+                    return '全角文字で入力してください';
+                  }
+                  return '';
+                },
+              ),
+              AccountGroupHeader(title: '33'),
+              MFAccountTextField(
+                controller: textController3,
+                node: CheckFocusNode(),
+                title: '33',
+                labelText: '33',
+                checkAction: (value) {
+                  if (value.isEmpty) {
+                    return '入力してください';
+                  }
+                  if (value.length < 10) {
+                    return '全角文字で入力してください';
+                  }
+                  return '';
+                },
+              ),
+              RaisedButton(
+                color: Colors.white,
+                child: Text('jump to page'),
+                onPressed: () {
+                  controller.checkAll();
+                },
+              )
+            ],
           ),
-          Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('姓'),
-                SizedBox(height: 2),
-                MFTextField(
-                  controller: TextEditingController(),
-                  labelText: '10文字まで  (例)銀行',
-                  focusNode: FocusNode(),
-                  checkAction: (value) {
-                    if (value.isEmpty) {
-                      return '入力してください';
-                    }
-                    if (value.length < 10) {
-                      return '全角文字で入力してください';
-                    }
-                    return '';
-                  },
-                )
-              ],
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
 }
 
-typedef CheckAction<T> = String Function(T value);
+class AccountGroupHeader extends StatelessWidget {
+  final String title;
+  final bool isMust;
 
-enum TextFieldShowType { empty, error }
-
-class MFTextField extends StatefulWidget {
-  final TextEditingController controller;
-  final FocusNode focusNode;
-  final CheckAction<String> checkAction;
-  final String labelText;
-
-  const MFTextField({
+  const AccountGroupHeader({
     Key key,
-    this.checkAction,
-    this.controller,
-    this.focusNode,
-    this.labelText,
+    this.title = '',
+    this.isMust = true,
   }) : super(key: key);
-
-  @override
-  _MFTextFieldState createState() => _MFTextFieldState();
-}
-
-class _MFTextFieldState extends State<MFTextField> {
-  FocusNode _focusNode;
-  String _errorMsg = '';
-  TextFieldShowType _showType = TextFieldShowType.empty;
-
-  @override
-  void dispose() {
-    print('_MFTextFieldState  dispose');
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    _focusNode = widget.focusNode ?? FocusNode();
-    _focusNode.addListener(_focusNodeListener);
-    super.initState();
-  }
-
-  void _focusNodeListener() {
-    if (_focusNode.hasFocus) {
-      updateType(TextFieldShowType.empty);
-    } else {
-      // 焦点离开
-      if (widget.checkAction != null) {
-        _errorMsg = widget.checkAction(widget.controller.text);
-      } else {
-        _errorMsg = '';
-      }
-      if (_errorMsg != null && _errorMsg.isNotEmpty) {
-        updateType(TextFieldShowType.error);
-      } else {
-        updateType(TextFieldShowType.empty);
-      }
-    }
-  }
-
-  /// 更新状态
-  void updateType(TextFieldShowType type) {
-    setState(() {
-      _showType = type;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: TextField(
-        focusNode: _focusNode,
-        controller: widget.controller ?? TextEditingController(),
-        style: TextStyle(fontSize: 18),
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(0),
-          labelText: widget.labelText,
-          labelStyle: TextStyle(fontSize: 12),
-          errorText: (_errorMsg.isEmpty || _showType == TextFieldShowType.empty) ? null : _errorMsg,
+      color: Colors.white,
+      padding: EdgeInsets.only(left: 2, right: 2),
+      child: Container(
+        color: Color(0xFFF0F0F0),
+        height: 50,
+        padding: EdgeInsets.only(left: 8, right: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            Container(
+              color: Colors.red,
+              padding: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
+              child: Text(
+                '必須',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
