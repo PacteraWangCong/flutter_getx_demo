@@ -24,6 +24,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # minefocus
+  minefocus_base_flutter:
+    git:
+      url: git@github.com:minefocus/minefocus_base_flutter.git
+      ref: master
+
   get: 3.10.1
   flutter_easyloading: ^2.2.0
 
@@ -35,10 +41,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
 
   # The following line ensures that the Material Icons font is
