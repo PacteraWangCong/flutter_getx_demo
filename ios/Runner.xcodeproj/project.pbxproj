@@ -358,7 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SCSK Corporation";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = DLZ6PYT9WF;
@@ -499,7 +499,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Katou (L2V4F6SJRF)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = DLZ6PYT9WF;
@@ -534,7 +534,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SCSK Corporation";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = DLZ6PYT9WF;
