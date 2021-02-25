@@ -23,3 +23,4 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH }}
       - run: flutter pub get
+      - run: flutter buid apk
