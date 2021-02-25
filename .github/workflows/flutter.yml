@@ -2,9 +2,9 @@ name: flutter starter workflow
 
 on:
   push:
-    branches: [ main ]
+    branches: [ Action-Test ]
   pull_request:
-    branches: [ main ]
+    branches: [ Action-Test ]
 
 jobs:
   build:
