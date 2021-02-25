@@ -16,11 +16,15 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - uses: subosito/flutter-action@v1.4.0
-        with:
-          flutter-version: 1.20.2
       - uses: webfactory/ssh-agent@v0.5.0
         with:
           ssh-private-key: ${{ secrets.SSH }}
-      - run: flutter pub get
-      - run: flutter build apk
+      - run: |
+             cd ios
+             make cert
+             cd ..
+#      - uses: subosito/flutter-action@v1.4.0
+#        with:
+#          flutter-version: 1.20.2
+#      - run: flutter pub get
+#      - run: flutter build apk
