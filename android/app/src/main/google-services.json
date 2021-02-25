@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "714314688805",
+    "firebase_url": "https://chibabank-flutter.firebaseio.com",
+    "project_id": "chibabank-flutter",
+    "storage_bucket": "chibabank-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714314688805:android:407b1d425e56150c8dd2cc",
+        "android_client_info": {
+          "package_name": "jp.co.chibabank.minefocus.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714314688805-u0bdili9ogf465jt500lgpvkrf16kk8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT5vTswCtpLApvvttKaDsTOrZesoKauRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714314688805-u0bdili9ogf465jt500lgpvkrf16kk8u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "714314688805-6cu5ujpasaft8pv7vekqs72cfaegq9d1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.co.chibabank.minefocus.stg"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714314688805:android:15e954e532c504278dd2cc",
+        "android_client_info": {
+          "package_name": "jp.co.chibabank.minefocus.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714314688805-u0bdili9ogf465jt500lgpvkrf16kk8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT5vTswCtpLApvvttKaDsTOrZesoKauRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714314688805-u0bdili9ogf465jt500lgpvkrf16kk8u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "714314688805-6cu5ujpasaft8pv7vekqs72cfaegq9d1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.co.chibabank.minefocus.stg"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714314688805:android:6cebfeb785e648f58dd2cc",
+        "android_client_info": {
+          "package_name": "jp.co.chibabank.minefocus.uat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714314688805-u0bdili9ogf465jt500lgpvkrf16kk8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT5vTswCtpLApvvttKaDsTOrZesoKauRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714314688805-u0bdili9ogf465jt500lgpvkrf16kk8u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "714314688805-6cu5ujpasaft8pv7vekqs72cfaegq9d1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.co.chibabank.minefocus.stg"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
