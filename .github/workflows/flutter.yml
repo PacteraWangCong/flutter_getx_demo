@@ -11,30 +11,79 @@ jobs:
     name: Build flutter
     runs-on: macos-latest
 
-    steps:
+    # check out 代码
+    - steps: check out
       - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+
+    # install java
+    - steps: install java
+        uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.SSH }}
-      - name: Import Provisioning Profile
-        run: |
-          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          echo "${{ secrets.PROVISIONING_PROFILE }}" > adhoc.mobileprovision.txt
-          base64 --decode adhoc.mobileprovision.txt > ~/Library/MobileDevice/Provisioning\ Profiles/decoded.mobileprovision
-      - name: Import Code-Signing Certificates
-        uses: Apple-Actions/import-codesign-certs@v1
-        with:
-          p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-          p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
-      - uses: subosito/flutter-action@v1.4.0
-        with:
-          flutter-version: 1.20.2
-      - run: flutter pub get
-      - run: flutter build ios --release
-      - run: flutter build apk
-      - run: |
-             cd ios
-             fastlane build
+
+#      # 设置github认证，为后续pod、pub get 私有库做准备
+#      - name: setup github ssh
+#        uses: webfactory/ssh-agent@v0.5.0
+#          with:
+#            ssh-private-key: ${{ secrets.SSH }}
+#
+#      # 设置pod缓存
+#      - name: setup pod cache
+#        uses: actions/cache@v2
+#        with:
+#          path: Pods
+#          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pods-
+#
+#      # 设置gradle缓存
+#      - name: setup gradle cache
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            ~/.gradle/caches
+#            ~/.gradle/wrapper
+#          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+#          restore-keys: |
+#            ${{ runner.os }}-gradle-
+#
+#      # 设置ios打包所需的Provisioning Profile
+#      - name: Import Provisioning Profile
+#        run: |
+#          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+#          echo "${{ secrets.PROVISIONING_PROFILE }}" > adhoc.mobileprovision.txt
+#          base64 --decode adhoc.mobileprovision.txt > ~/Library/MobileDevice/Provisioning\ Profiles/decoded.mobileprovision
+#
+#      # 设置ios打包所需的p12
+#      - name: Import Code-Signing Certificates
+#        uses: Apple-Actions/import-codesign-certs@v1
+#        with:
+#          p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+#          p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
+#
+#      # 安装 flutter
+#      - name: install flutter
+#      - uses: subosito/flutter-action@v1.4.0
+#        with:
+#          flutter-version: 1.20.2
+#      - run: flutter pub get
+#
+#      # 打包apk
+#      - name: build apk
+#        run: flutter build apk
+#
+#      # 打包ipa
+#      - name: build ipa
+#        run: |
+#             flutter build ios --release
+#             cd ios
+#             fastlane build
+#
+#      # 进行归档
+#      - name: artifact
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: Artifact
+#          path: |
+#               **/*.ipa
+#               **/outputs/flutter-apk/*apk
