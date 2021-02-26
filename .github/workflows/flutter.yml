@@ -25,8 +25,8 @@ jobs:
       # 设置github认证，为后续pod、pub get 私有库做准备
       - name: setup github ssh
         uses: webfactory/ssh-agent@v0.5.0
-          with:
-            ssh-private-key: ${{ secrets.SSH }}
+        with:
+          ssh-private-key: ${{ secrets.SSH }}
 
       # 设置pod缓存
       - name: setup pod cache
