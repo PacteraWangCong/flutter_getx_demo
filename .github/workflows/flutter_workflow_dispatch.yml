@@ -1,4 +1,4 @@
-name: flutter starter workflow
+name: Manually triggered workflow
 
 on:
   workflow_dispatch:
