@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  PROJECT_VERSION: 1
-
 jobs:
   build:
     name: Build flutter
