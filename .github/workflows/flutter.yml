@@ -16,9 +16,9 @@ jobs:
       - name: check out
         uses: actions/checkout@v2
         with:
-          clean: false
+          clean: 'false'
 
-      - run: git rev-list HEAD | wc -l | tr -d ''
+      - run: git rev-list HEAD | wc -l | tr -d ' '
 
 #      # install java
 #      - name: install java
