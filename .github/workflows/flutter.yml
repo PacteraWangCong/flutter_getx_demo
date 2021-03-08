@@ -12,14 +12,16 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - env:
+          PROJECT_VERSION: ''
       # check out 代码
       - name: check out
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - run: |
-            git rev-list HEAD | wc -l | tr -d ' ' >> GITHUB_ENV
-      - run: echo "${{ GITHUB_ENV }}"
+            git rev-list HEAD | wc -l | tr -d ' ' >> PROJECT_VERSION
+      - run: echo "${{ PROJECT_VERSION }}"
 
 #      # install java
 #      - name: install java
