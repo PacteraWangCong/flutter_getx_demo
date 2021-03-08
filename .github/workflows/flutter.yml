@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
       - name: env
         env:
-          PROJECT_VERSION: ${git rev-list HEAD | wc -l | tr -d ' '}
+          PROJECT_VERSION: $(git rev-list HEAD | wc -l | tr -d ' ')
         run: echo "${{ env.PROJECT_VERSION }}"
 
 #      # install java
