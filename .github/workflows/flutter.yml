@@ -6,15 +6,15 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  PROJECT_VERSION: 1
+
 jobs:
   build:
     name: Build flutter
     runs-on: macos-latest
 
     steps:
-      env:
-        PROJECT_VERSION: 1
-
       # check out 代码
       - name: check out
         uses: actions/checkout@v2
