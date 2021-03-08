@@ -18,8 +18,8 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-            git rev-list HEAD | wc -l | tr -d ' ' >> $GITHUB_VERSION
-      - run: echo "${{ $GITHUB_VERSION }}"
+            git rev-list HEAD | wc -l | tr -d ' ' >> GITHUB_ENV
+      - run: echo "${{ GITHUB_ENV }}"
 
 #      # install java
 #      - name: install java
