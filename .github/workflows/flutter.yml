@@ -18,13 +18,13 @@ jobs:
         with:
           fetch-depth: 0
 
-#      - name: env
-#        env:
-#          PROJECT_VERSION: 1
+      - name: env
+        env:
+          PROJECT_VERSION: 1
 
       - run: |
-            git rev-list HEAD | wc -l | tr -d ' ' >> PROJECT_VERSION
-      - run: echo "${{ PROJECT_VERSION }}"
+            git rev-list HEAD | wc -l | tr -d ' ' >> env.PROJECT_VERSION
+      - run: echo "${{ env.PROJECT_VERSION }}"
 
 #      # install java
 #      - name: install java
