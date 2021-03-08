@@ -19,7 +19,7 @@ jobs:
       - name: check out
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 100
 
       - run: |
             git rev-list HEAD | wc -l | tr -d ' ' >> env.PROJECT_VERSION
