@@ -17,7 +17,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - run: git rev-list HEAD | wc -l | tr -d ' '
+      - run: |
+            git rev-list HEAD | wc -l | tr -d ' ' >> $GITHUB_VERSION
+      - run: echo "${{ $GITHUB_VERSION }}"
 
 #      # install java
 #      - name: install java
