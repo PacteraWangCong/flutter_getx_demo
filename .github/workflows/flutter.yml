@@ -16,7 +16,7 @@ jobs:
       - name: check out
         uses: actions/checkout@v2
         with:
-          fetch-depth: ''
+          fetch-depth: 0
       - run: git rev-list HEAD | wc -l | tr -d ' '
 
 #      # install java
