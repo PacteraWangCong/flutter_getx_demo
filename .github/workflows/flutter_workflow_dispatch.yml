@@ -90,10 +90,15 @@ jobs:
              fastlane build
 
       # 进行归档
-      - name: artifact
+      - name: artifact ipa
         uses: actions/upload-artifact@v2
         with:
-          name: Artifact
-          path: |
-               **/*.ipa
-               **/outputs/flutter-apk/*apk
+          name: Artifact1
+          path: **/*.ipa
+      - name: artifact apk
+        uses: actions/upload-artifact@v2
+        with:
+          name: Artifact2
+          path: **/outputs/flutter-apk/*apk
+
+
