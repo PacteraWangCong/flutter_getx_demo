@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 2
 
       - run: git checkout HEAD^
-      - run: git rev-list HEAD
+      - run: git rev-list HEAD | wc -l | tr -d ' '
 
 #      # install java
 #      - name: install java
