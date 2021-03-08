@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ main ]
 
-#env:
-#  PROJECT_VERSION: 1
+env:
+  PROJECT_VERSION: 1
 
 jobs:
   build:
@@ -19,10 +19,10 @@ jobs:
       - name: check out
         uses: actions/checkout@v2
         with:
-          fetch-depth: 100
+          fetch-depth: 0
 
       - run: |
-            git rev-list HEAD | wc -l | tr -d ' ' >> env.PROJECT_VERSION
+            git rev-list HEAD | wc -l | tr -d ' ' >> $env.PROJECT_VERSION
       - run: echo "${{ env.PROJECT_VERSION }}"
 
 #      # install java
