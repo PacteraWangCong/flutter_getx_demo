@@ -12,15 +12,14 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - env:
+          PROJECT_VERSION: 1
+          
       # check out 代码
       - name: check out
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: env
-        env:
-          PROJECT_VERSION: 1
 
       - run: |
             git rev-list HEAD | wc -l | tr -d ' ' >> env.PROJECT_VERSION
