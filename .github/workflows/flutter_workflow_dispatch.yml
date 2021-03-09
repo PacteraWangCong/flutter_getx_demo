@@ -30,26 +30,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH }}
 
-      # 设置pod缓存
-      - name: setup pod cache
-        uses: actions/cache@v2
-        with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
-
-      # 设置gradle缓存
-      - name: setup gradle cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
       # 设置ios打包所需的Provisioning Profile
       - name: Import Provisioning Profile
         run: |
@@ -75,6 +55,37 @@ jobs:
         uses: subosito/flutter-action@v1.4.0
         with:
           flutter-version: 1.20.2
+
+      # 设置pod缓存
+      - name: setup pod cache
+        uses: actions/cache@v2
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      # 设置gradle缓存
+      - name: setup gradle cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      # 设置pub缓存
+      - name: setup pub cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ FLUTTER_HOME }}/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
       - run: flutter pub get
 
       # 打包apk
