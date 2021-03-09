@@ -22,15 +22,14 @@ jobs:
           echo 'PROJECT_VERSION='$(git rev-list HEAD | wc -l | tr -d ' ') >> $GITHUB_ENV
       - run: |
           mkdir -p ios/build/release/dev
-          cd ios/build/release/dev
-          touch test.ipa
-          echo 'PROJECT_IOS_NAME=test.ipa' >> $GITHUB_ENV
+          touch ios/build/release/dev/test.ipa
+          echo 'RELEASE_IOS_NAME'=$(find ios/build/release/dev  -name '**.ipa'|sed 's#.*/##') >> $GITHUB_ENV
 
       # 进行归档
       - name: artifact ipa
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.PROJECT_IOS_NAME }}
+          name: ${{ env.RELEASE_IOS_NAME }}
           path: |
             ios/build/release/dev/*.ipa
 
