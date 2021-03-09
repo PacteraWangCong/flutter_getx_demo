@@ -17,11 +17,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: env
-        env:
-          PROJECT_VERSION: $(git rev-list HEAD | wc -l | tr -d ' ')
-        run: echo "${{ env.PROJECT_VERSION }}"
 
+      - run: |
+          echo 'PROJECT_VERSION='$(git rev-list HEAD | wc -l | tr -d ' ') >> $GITHUB_ENV
       - run: echo "------${{ env.PROJECT_VERSION }}------"
 
 #      # install java
