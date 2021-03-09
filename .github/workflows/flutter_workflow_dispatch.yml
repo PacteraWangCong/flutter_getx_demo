@@ -81,7 +81,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ${{ FLUTTER_HOME }}/.pub-cache
+            ${{ env.FLUTTER_HOME }}/.pub-cache
           key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
           restore-keys: |
             ${{ runner.os }}-pub-
