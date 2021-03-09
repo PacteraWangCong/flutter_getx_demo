@@ -30,7 +30,7 @@ jobs:
       - name: artifact ipa
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ PROJECT_IOS_NAME }}
+          name: ${{ env.PROJECT_IOS_NAME }}
           path: |
             ios/build/release/dev/*.ipa
 
