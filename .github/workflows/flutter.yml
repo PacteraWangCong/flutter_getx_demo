@@ -22,8 +22,9 @@ jobs:
           echo 'PROJECT_VERSION='$(git rev-list HEAD | wc -l | tr -d ' ') >> $GITHUB_ENV
       - run: |
           mkdir -p ios/build/release/dev
-          touch ios/build/release/dev/test.ipa
-          echo 'RELEASE_IOS_NAME'=$(find ios/build/release/dev  -name '**.ipa'|sed 's#.*/##') >> $GITHUB_ENV
+          touch ios/build/release/dev/test.text
+          echo 'sfsfsdfsdfsdf' > ios/build/release/dev/test.text
+          echo 'RELEASE_IOS_NAME'=$(find ios/build/release/dev  -name '*.text'|sed 's#.*/##') >> $GITHUB_ENV
 
       # 进行归档
       - name: artifact ipa
@@ -31,7 +32,7 @@ jobs:
         with:
           name: ${{ env.RELEASE_IOS_NAME }}
           path: |
-            ios/build/release/dev/*.ipa
+            ios/build/release/dev/*.text
 
 
 #      # install java
