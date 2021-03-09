@@ -20,7 +20,19 @@ jobs:
 
       - run: |
           echo 'PROJECT_VERSION='$(git rev-list HEAD | wc -l | tr -d ' ') >> $GITHUB_ENV
-      - run: echo "------${{ env.PROJECT_VERSION }}------"
+      - run: |
+          mkdir -p ios/build/release/dev
+          cd ios/build/release/dev
+          touch test.ipa
+
+      # 进行归档
+      - name: artifact ipa
+        uses: actions/upload-artifact@v2
+        with:
+          name: Artifact1
+          path: |
+            ios/build/release/dev/*.ipa
+
 
 #      # install java
 #      - name: install java
