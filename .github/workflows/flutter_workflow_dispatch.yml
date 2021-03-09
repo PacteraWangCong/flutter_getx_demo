@@ -9,7 +9,7 @@ on:
         default: 'dev'
 
 jobs:
-  build apk:
+  build-apk:
     name: Build apk
     runs-on: ubuntu-latest
 
@@ -71,7 +71,7 @@ jobs:
           path: |
             **/outputs/flutter-apk/*apk
 
-  build ios:
+  build-ios:
         name: Build  ios
         runs-on: macos-latest
 
