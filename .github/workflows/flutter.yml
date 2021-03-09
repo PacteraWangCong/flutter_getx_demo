@@ -24,12 +24,13 @@ jobs:
           mkdir -p ios/build/release/dev
           cd ios/build/release/dev
           touch test.ipa
+          echo 'PROJECT_IOS_NAME=test.ipa' >> $GITHUB_ENV
 
       # 进行归档
       - name: artifact ipa
         uses: actions/upload-artifact@v2
         with:
-          name: Artifact1
+          name: ${{ PROJECT_IOS_NAME }}
           path: |
             ios/build/release/dev/*.ipa
 
