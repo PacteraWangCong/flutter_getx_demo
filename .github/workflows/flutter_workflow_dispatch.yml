@@ -8,7 +8,6 @@ on:
         required: true
         default: 'dev'
 
-###### build apk ########
 jobs:
   build apk:
     name: Build apk
@@ -71,7 +70,7 @@ jobs:
           name: Artifact2
           path: |
             **/outputs/flutter-apk/*apk
-            
+
   build ios:
         name: Build  ios
         runs-on: macos-latest
