@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+  SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK_URL }}
 
 jobs:
   slackNotification:
