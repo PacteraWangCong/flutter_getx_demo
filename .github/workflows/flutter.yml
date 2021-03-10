@@ -18,7 +18,7 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: '#flutter'
+          SLACK_CHANNEL: flutter
           SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_MESSAGE: 'flutter getx demo'
