@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK_URL }}
+
 
 jobs:
   slackNotification:
@@ -17,6 +17,7 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
           SLACK_CHANNEL: '#flutter'
           SLACK_COLOR: good
           SLACK_ICON: https://github.com/rtCamp.png?size=48
