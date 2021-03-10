@@ -20,7 +20,7 @@ jobs:
         env:
           SLACK_CHANNEL: flutter
           SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
-          SLACK_COLOR: ${{ job.status }}
+          SLACK_COLOR: good
           SLACK_MESSAGE: 'flutter getx demo'
           SLACK_TITLE: Post Title
-          SLACK_USERNAME: GithubAction
+          SLACK_USERNAME: Github Action
