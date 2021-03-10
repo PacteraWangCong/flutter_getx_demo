@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
+        if: success()
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
           SLACK_CHANNEL: '#flutter'
