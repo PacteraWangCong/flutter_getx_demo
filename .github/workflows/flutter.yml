@@ -1,116 +1,19 @@
 name: flutter starter workflow
 
 on:
-  push:
-    branches: [Action-Test]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
-    name: Build flutter
-    runs-on: macos-latest
+    name: slack notiy
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
     steps:
-      # check out 代码
-      - name: check out
-        uses: actions/checkout@v2
+      - uses: act10ns/slack@v1
         with:
-          fetch-depth: 0
-
-      - run: |
-          echo 'PROJECT_VERSION='$(git rev-list HEAD | wc -l | tr -d ' ') >> $GITHUB_ENV
-      - run: |
-          mkdir -p ios/build/release/dev
-          touch ios/build/release/dev/test.text
-          echo 'sfsfsdfsdfsdf' > ios/build/release/dev/test.text
-          echo 'RELEASE_IOS_NAME'=$(find ios/build/release/dev  -name '*.text'|sed 's#.*/##') >> $GITHUB_ENV
-
-      # 进行归档
-      - name: artifact ipa
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.RELEASE_IOS_NAME }}
-          path: |
-            ios/build/release/dev/*.text
-
-
-#      # install java
-#      - name: install java
-#        uses: actions/setup-java@v1
-#        with:
-#          java-version: '12.x'
-#
-#      # 设置github认证，为后续pod、pub get 私有库做准备
-#      - name: setup github ssh
-#        uses: webfactory/ssh-agent@v0.5.0
-#        with:
-#          ssh-private-key: ${{ secrets.SSH }}
-#
-#      # 设置pod缓存
-#      - name: setup pod cache
-#        uses: actions/cache@v2
-#        with:
-#          path: Pods
-#          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-#          restore-keys: |
-#            ${{ runner.os }}-pods-
-#
-#      # 设置gradle缓存
-#      - name: setup gradle cache
-#        uses: actions/cache@v2
-#        with:
-#          path: |
-#            ~/.gradle/caches
-#            ~/.gradle/wrapper
-#          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-#          restore-keys: |
-#            ${{ runner.os }}-gradle-
-#
-#      # 设置ios打包所需的Provisioning Profile
-#      - name: Import Provisioning Profile
-#        run: |
-#          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-#          echo "${{ secrets.PROVISIONING_PROFILE }}" > adhoc.mobileprovision.txt
-#          base64 --decode adhoc.mobileprovision.txt > ~/Library/MobileDevice/Provisioning\ Profiles/decoded.mobileprovision
-#
-#      # 设置ios打包所需的p12
-#      - name: Import Code-Signing Certificates
-#        uses: Apple-Actions/import-codesign-certs@v1
-#        with:
-#          p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-#          p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
-#
-#      # xcode 安装
-#      - name: install xcode
-#        uses: maxim-lobanov/setup-xcode@v1
-#        with:
-#          xcode-version: 12.2
-#
-#      # 安装 flutter
-#      - name: install flutter
-#        uses: subosito/flutter-action@v1.4.0
-#        with:
-#          flutter-version: 1.20.2
-#
-#      - run: flutter pub get
-#
-#      # 打包apk
-#      - name: build apk
-#        run: flutter build apk
-#
-#      # 打包ipa
-#      - name: build ipa
-#        run: |
-#             flutter build ios --release
-#             cd ios
-#             fastlane build
-#
-#      # 进行归档
-#      - name: artifact
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: Artifact
-#          path: |
-#               **/*.ipa
-#               **/outputs/flutter-apk/*apk
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: '#workflows'
+        if: always()
