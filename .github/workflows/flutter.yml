@@ -1,19 +1,22 @@
 name: flutter starter workflow
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [Action-Test]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     name: slack notiy
     runs-on: ubuntu-latest
     env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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'
 
     steps:
       - uses: act10ns/slack@v1
         with:
           status: ${{ job.status }}
           steps: ${{ toJson(steps) }}
-          channel: '#workflows'
+          channel: '#flutter'
         if: always()
