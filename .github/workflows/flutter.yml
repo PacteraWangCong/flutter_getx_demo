@@ -20,9 +20,8 @@ jobs:
         env:
           SLACK_CHANNEL: flutter
           SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
-          SLACK_COLOR: good
+          SLACK_COLOR: danger
           SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
           SLACK_USERNAME: Github Action
           SLACK_TITLE: Message
           SLACK_MESSAGE: 'flutter getx demo'
-            
