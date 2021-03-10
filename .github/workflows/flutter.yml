@@ -26,5 +26,5 @@ jobs:
           SLACK_COLOR: good
           SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
           SLACK_USERNAME: Github Action
-          SLACK_TITLE: "`flutter getx demo`"
-          SLACK_MESSAGE: ':smiley:最新アプリをビルド失敗しました:smiley: \n *scheme:* `${{ github.event.inputs.scheme }}`'
+          SLACK_TITLE: '`flutter getx demo`'
+          SLACK_MESSAGE: '*scheme:* `${{ github.event.inputs.scheme }}`'

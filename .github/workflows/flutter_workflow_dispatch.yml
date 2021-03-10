@@ -168,8 +168,8 @@ jobs:
           SLACK_COLOR: good
           SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
           SLACK_USERNAME: Github Action
-          SLACK_TITLE: "`flutter getx demo`"
-          SLACK_MESSAGE: ':smiley:最新アプリをビルド失敗しました:smiley: \n *scheme:* `${{ github.event.inputs.scheme }}`'
+          SLACK_TITLE: '`flutter getx demo`'
+          SLACK_MESSAGE: '*scheme:* `${{ github.event.inputs.scheme }}`'
       - name: Slack Notification
         if: failure()
         uses: rtCamp/action-slack-notify@v2
@@ -180,4 +180,4 @@ jobs:
           SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
           SLACK_USERNAME: Github Action
           SLACK_TITLE: "`flutter getx demo`"
-          SLACK_MESSAGE: ':pensive:最新アプリをビルド失敗しました:pensive: \n *scheme:* `${{ github.event.inputs.scheme }}`'
+          SLACK_MESSAGE: '*scheme:* `${{ github.event.inputs.scheme }}`'
