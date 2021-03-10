@@ -153,3 +153,31 @@ jobs:
           name: Artifact1
           path: |
             **/*.ipa
+
+  slackNotification:
+    needs: [build-apk, build-ios]
+    name: slack notiy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Slack Notification
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: flutter
+          SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
+          SLACK_COLOR: good
+          SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
+          SLACK_USERNAME: Github Action
+          SLACK_TITLE: Success
+          SLACK_MESSAGE: 'flutter getx demo Success'
+      - name: Slack Notification
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: flutter
+          SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
+          SLACK_COLOR: danger
+          SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
+          SLACK_USERNAME: Github Action
+          SLACK_TITLE: Failed
+          SLACK_MESSAGE: 'flutter getx demo Failed'
