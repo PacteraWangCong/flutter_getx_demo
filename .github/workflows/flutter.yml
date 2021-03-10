@@ -21,4 +21,4 @@ jobs:
           SLACK_MESSAGE: 'Post Content :rocket:'
           SLACK_TITLE: Post Title
           SLACK_USERNAME: GithubAction
-          SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
+          SLACK_WEBHOOK: https://hooks.slack.com/services/T3CJK7EKB/B01QåQTZTNBD/KafDD75XJMLYMf2KKeGrRg2Y
