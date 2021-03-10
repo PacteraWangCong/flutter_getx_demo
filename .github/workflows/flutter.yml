@@ -16,7 +16,7 @@ on:
 jobs:
   slackNotification:
     name: slack notiy
-    if: ${{ github.event.inputs.scheme == 'dev'}}
+    if: ${{ github.event.inputs.scheme != 'dev'}}
     runs-on: Ubuntu-20.04
     steps:
       - name: Slack Notification
