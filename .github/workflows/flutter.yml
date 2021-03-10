@@ -16,7 +16,7 @@ jobs:
         if: success()
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
-          SLACK_CHANNEL: ios
+          SLACK_CHANNEL: flutter
           SLACK_COLOR: good
           SLACK_ICON: https://github.com/rtCamp.png?size=48
           SLACK_MESSAGE: 'flutter getx demo'
