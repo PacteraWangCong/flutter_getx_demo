@@ -11,10 +11,17 @@ jobs:
     name: slack notiy
     runs-on: ubuntu-latest
     steps:
-      - uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
+      # check out 代码
+      - name: check out
+        uses: actions/checkout@v2
+        
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: success()
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_FLUTTER_WEBHOOK }} # required
-        if: always()
+          SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'flutter getx demo'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: GithubAction
