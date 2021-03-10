@@ -142,7 +142,7 @@ jobs:
       # 打包ipa
       - name: build ipa
         run: |
-          flutter build ios --release
+          flutter build ios --release --no-simulator --no-codesign
           cd ios
           fastlane build
 
