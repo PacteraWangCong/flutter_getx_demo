@@ -16,7 +16,6 @@ on:
 jobs:
   slackNotification:
     name: slack notiy
-    if: ${{ github.event.inputs.scheme != 'dev'}}
     runs-on: Ubuntu-20.04
     steps:
       - name: Slack Notification
@@ -27,5 +26,5 @@ jobs:
           SLACK_COLOR: good
           SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
           SLACK_USERNAME: Github Action
-          SLACK_TITLE: Message
-          SLACK_MESSAGE: 'flutter getx demo'
+          SLACK_TITLE: ":smiley: `flutter getx demo` 最新アプリをビルド成功しました:smiley:"
+          SLACK_MESSAGE: '*scheme:* `${{ github.event.inputs.scheme }}`'

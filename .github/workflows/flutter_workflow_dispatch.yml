@@ -11,7 +11,7 @@ on:
 jobs:
   build-apk:
     name: Build apk
-    runs-on: ubuntu-latest
+    runs-on: Ubuntu-20.04
 
     steps:
       # check out 代码
