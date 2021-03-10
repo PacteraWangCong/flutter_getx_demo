@@ -2,7 +2,11 @@ name: flutter starter workflow
 
 on:
   workflow_dispatch:
-
+    inputs:
+      scheme:
+        description: 'scheme 例: dev、stg、uat、pro'
+        required: true
+        default: 'dev'
 #on:
 #  push:
 #    branches: [Action-Test]
@@ -12,10 +16,10 @@ on:
 jobs:
   slackNotification:
     name: slack notiy
-    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.scheme == 'dev'}}
+    runs-on: Ubuntu-20.04
     steps:
       - name: Slack Notification
-        if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: flutter
