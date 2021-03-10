@@ -11,7 +11,7 @@ on:
 jobs:
   build-apk:
     name: Build apk
-    runs-on: Ubuntu-20.04
+    runs-on: ubuntu-20.04
 
     steps:
       # check out 代码
@@ -157,7 +157,7 @@ jobs:
   slackNotification:
     needs: [build-apk, build-ios]
     name: slack notiy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Slack Notification
         if: success()
@@ -168,8 +168,8 @@ jobs:
           SLACK_COLOR: good
           SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
           SLACK_USERNAME: Github Action
-          SLACK_TITLE: Success
-          SLACK_MESSAGE: 'flutter getx demo Success'
+          SLACK_TITLE: ":smiley: `flutter getx demo` 最新アプリをビルド成功しました:smiley:"
+          SLACK_MESSAGE: '*scheme:* `${{ github.event.inputs.scheme }}`'
       - name: Slack Notification
         if: failure()
         uses: rtCamp/action-slack-notify@v2
@@ -179,5 +179,5 @@ jobs:
           SLACK_COLOR: danger
           SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
           SLACK_USERNAME: Github Action
-          SLACK_TITLE: Failed
-          SLACK_MESSAGE: 'flutter getx demo Failed'
+          SLACK_TITLE: ":pensive: `flutter getx demo` 最新アプリをビルド失敗しました:pensive:"
+          SLACK_MESSAGE: '*scheme:* `${{ github.event.inputs.scheme }}`'
