@@ -18,13 +18,8 @@ jobs:
     name: slack notiy
     runs-on: ubuntu-20.04
     steps:
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: flutter
-          SLACK_WEBHOOK: ${{ secrets.SLACK_FLUTTER_WEBHOOK }}
-          SLACK_COLOR: good
-          SLACK_ICON: https://avatars0.githubusercontent.com/u/44036562?s=100&v=4
-          SLACK_USERNAME: Github Action
-          SLACK_TITLE: '`flutter getx demo`'
-          SLACK_MESSAGE: '*scheme:* `${{ github.event.inputs.scheme }}`'
+      - name: Prettify code
+        uses: creyD/prettier_action@v3.3
+        with:
+          commit_message: '🎨 style: prettified code'
+
