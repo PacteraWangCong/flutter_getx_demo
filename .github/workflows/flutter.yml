@@ -21,6 +21,5 @@ jobs:
       - name: Prettify code
         uses: creyD/prettier_action@v3.3
         with:
-          prettier_options: --write **/*.{js,md}
           commit_message: '🎨 style: prettified code'
 
