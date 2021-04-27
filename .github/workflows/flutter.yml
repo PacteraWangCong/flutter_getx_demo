@@ -25,4 +25,6 @@ jobs:
       - name: create key.properties
         run: |
           echo "$GITHUB_WORKSPACE"
+          cd $GITHUB_WORKSPACE
+          ls
 
