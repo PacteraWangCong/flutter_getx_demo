@@ -28,4 +28,8 @@ jobs:
           commit_message: '🎨 style: prettified code'
         env:
           GITHUB_TOKEN: ${{ secrets.SSH }}
+      # 创建key.properties
+      - name: create key.properties
+        run: |
+          echo "${{ GITHUB_WORKSPACE }}"
 
